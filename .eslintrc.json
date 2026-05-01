@@ -1,0 +1,32 @@
+{
+  "root": true,
+  "env": {
+    "es2022": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "sourceType": "commonjs"
+  },
+  "rules": {
+    // Code quality
+    "no-unused-vars":    ["warn", { "argsIgnorePattern": "^_" }],
+    "no-console":        "off",
+    "no-undef":          "error",
+    "eqeqeq":           ["error", "always"],
+    "curly":             "error",
+
+    // Style
+    "semi":              ["error", "always"],
+    "quotes":            ["error", "single", { "avoidEscape": true }],
+    "indent":            ["error", 2],
+    "comma-dangle":      ["error", "always-multiline"],
+    "no-trailing-spaces":"error",
+    "eol-last":          ["error", "always"],
+
+    // ES6+
+    "prefer-const":      "error",
+    "arrow-parens":      ["error", "as-needed"],
+    "no-var":            "error"
+  }
+}

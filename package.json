@@ -1,0 +1,118 @@
+{
+  "name": "listify-html",
+  "displayName": "Listify HTML",
+  "description": "Convert indentation into nested HTML and Markdown lists instantly. Supports auto-detection, indentation preservation, and reverse conversion.",
+  "version": "1.0.0",
+  "publisher": "your-publisher-id",
+  "author": {
+    "name": "Swarup Dhavan",
+    "email": "swarup93@proton.me"
+  },
+  "license": "MIT",
+  "icon": "images/logo_128.png",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Formatters",
+    "Other"
+  ],
+  "keywords": [
+    "list",
+    "html",
+    "markdown",
+    "generator",
+    "formatter",
+    "ul",
+    "ol",
+    "nested list",
+    "indentation",
+    "productivity"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/swarup-93/listify-html.git"
+  },
+  "bugs": {
+    "url": "https://github.com/swarup-93/listify-html/issues"
+  },
+  "homepage": "https://github.com/swarup-93/listify-html#readme",
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "listify.convertSelection",
+        "title": "Listify: Convert Selection"
+      },
+      {
+        "command": "listifyHTML.generateList",
+        "title": "Listify HTML: Convert Text to List",
+        "category": "Listify HTML"
+      },
+      {
+        "command": "listifyHTML.reverseList",
+        "title": "Listify HTML: Convert List to Text",
+        "category": "Listify HTML"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "listifyHTML.generateList",
+          "when": "editorHasSelection",
+          "group": "1_modification@10"
+        },
+        {
+          "command": "listifyHTML.reverseList",
+          "when": "editorHasSelection",
+          "group": "1_modification@11"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Listify HTML",
+      "properties": {
+        "listifyHTML.defaultFormat": {
+          "type": "string",
+          "default": "html",
+          "enum": [
+            "html",
+            "markdown"
+          ],
+          "enumDescriptions": [
+            "Generate HTML lists (<ul>/<ol> with <li> tags)",
+            "Generate Markdown lists (- item or 1. item)"
+          ],
+          "description": "The default output format that will be pre-selected in the QuickPick prompt."
+        },
+        "listifyHTML.defaultListType": {
+          "type": "string",
+          "default": "ul",
+          "enum": [
+            "ul",
+            "ol"
+          ],
+          "enumDescriptions": [
+            "Unordered list (bullet points)",
+            "Ordered list (numbered)"
+          ],
+          "description": "The default list type when auto-detect is not used."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@vscode/test-electron": "^2.3.8",
+    "eslint": "^8.56.0",
+    "@vscode/vsce": "^2.22.0"
+  }
+}
